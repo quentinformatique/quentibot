@@ -15,7 +15,7 @@ module.exports = {
         const Role1 = message.guild.roles.cache.find(role => role.name === "membre")
         const Role2 = message.guild.roles.cache.find(role => role.name === "non vérifié")
 
-        const emoji1 = '✔️';
+        const emoji1 = '✅';
         const emoji2 = '❌';
 
 

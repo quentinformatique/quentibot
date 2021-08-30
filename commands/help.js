@@ -1,22 +1,23 @@
 exports.run = async(client, message) => {
     message.channel.send({
         embed: {
-            title: '**Music Help 🎶**',
+            title: '**aide musique 🎶**',
             description: `
-            __**Commands**__
+            __**Commandes**__
             
-            \`play\` <songName> => Play A Song From Youtube.
-            \`pause\` => Pause Music.
-            \`resume\` => Resume Music.
-            \`np\` => Get Now Playing Song's Info.
-            \`skip\` => Skip To Next Song.
-            \`stop\` => Stop Playing Music.
-            \`volume\` <value> => Adjust Volume Of The Music.
-            \`queue\` => To See The Full Song Queue.
+            \`play\` <nom de la musique> => Joue une musique depuis YouTube.
+            \`pause\` => Met la musique en pause.
+            \`resume\` => Remet la musique en marche.
+            \`np\` => donne les informations de la musique en cour.
+            \`skip\` => Passe a la musique suivante.
+            \`stop\` => Arrete de jouer d la musique.
+            \`volume\` <valeur entre 1/10> => Ajuste le volume de la musique.
+            \`queue\` => Voir la liste des musique dans la file d'attente.
 
 
             `,
-            color: 'BLACK'
+            color: 'ORANGE'
         }
     })
 }
+

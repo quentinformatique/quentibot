@@ -1,16 +1,16 @@
 exports.run = async(client, message) => {
     const channel = message.member.voice.channel;
-    if (!channel) return message.channel.send('You should join a voice channel before using this command!');
+    if (!channel) return message.channel.send('Vous devez dabbord rejoindre un salon vocal!');
     let queue = message.client.queue.get(message.guild.id)
     if(!queue){ return message.channel.send({
         embed: {
-            description: 'There is nothing in the queue right now! add using `+play <songName>`',
+            description: 'Il n\'y a rien dans la file dattente! Ajoutez de la musique avec `+play <songName>`',
             color: 'BLACK'
         }
     })
 }
     if(queue.songs.length !== 0) {
         message.react('✅')
-        queue.connection.dispatcher.end('Done the song skipped!')
+        queue.connection.dispatcher.end('Le son est passé!')
     }
 }

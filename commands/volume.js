@@ -16,7 +16,7 @@ exports.run = async(client, message, args) => {
     queue.volume = args[0]
     message.channel.send({
         embed: {
-            description: 'Le volume est de' + args[0]
+            description: 'Le volume est de ' + args[0]
         }
     })
 }

@@ -1,12 +1,12 @@
 exports.run = async(client, message, args) => {
     const channel = message.member.voice.channel;
-    if (!channel) return message.channel.send('You should join a voice channel before using this command!');
+    if (!channel) return message.channel.send('Vous devez dabbord rejoindre un salon vocal!');
 
     let queue = message.client.queue.get(message.guild.id)
 
     if(!args[0]) return message.channel.send({
         embed: {
-            description: 'The current volume is set to: ' + queue.volume
+            description: 'Actuelement le volume est de: ' + queue.volume
         }
     })
 
@@ -16,7 +16,7 @@ exports.run = async(client, message, args) => {
     queue.volume = args[0]
     message.channel.send({
         embed: {
-            description: 'Volume is set to ' + args[0]
+            description: 'Le volume est de' + args[0]
         }
     })
 }

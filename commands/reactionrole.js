@@ -21,7 +21,7 @@ module.exports = {
 
         let embed = new MessageEmbed()
         .setColor("ORANGE")
-        .setTitle("acceptez les regles")
+        .setTitle("Acceptez les règles !")
         .setDescription(desc)
 
         let msgembed = await channelID.send(embed)

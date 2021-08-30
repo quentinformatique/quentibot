@@ -63,7 +63,7 @@ exports.run = async (client, message, args) => {
         if (!song) {
             queue.voiceChannel.leave();
             message.client.queue.delete(message.guild.id);
-            message.channel.send('je n\'ai plus rien a jouer , je m\'en vai!')
+            message.channel.send('je n\'ai plus rien a jouer , je m\'en vais!')
             return;
         }
 

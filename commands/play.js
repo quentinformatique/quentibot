@@ -4,12 +4,12 @@ const discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-    if(!args[0]) return message.channel.send('You didn\'t provide a song to play!')
+    if(!args[0]) return message.channel.send('Vous n\'avez donner de musique a jouer !')
     let channel = message.member.voice.channel;
-    if(!channel) return message.channel.send('You need to join a voice channel to play a music!')
+    if(!channel) return message.channel.send('Vous devez dabbord etre dans un salon vocal !')
 
-    if (!channel.permissionsFor(message.client.user).has("CONNECT")) return message.channel.send('I don\'t have permission to join the voice channel')
-    if (!channel.permissionsFor(message.client.user).has("SPEAK"))return message.channel.send('I don\'t have permission to speak in the voice channel')
+    if (!channel.permissionsFor(message.client.user).has("CONNECT")) return message.channel.send('Euh je n\'ai pas la permission de rejoindre ce salon ... ')
+    if (!channel.permissionsFor(message.client.user).has("SPEAK"))return message.channel.send('Euh je n\'ai pas la permission de parler dans ce salon ...')
 
 
     const server = message.client.queue.get(message.guild.id);
@@ -36,13 +36,13 @@ exports.run = async (client, message, args) => {
         server.songs.push(song);
         console.log(server.songs);
         let embed = new discord.MessageEmbed()
-        .setTitle('Added to queue!')
+        .setTitle('Ajouté a la file d\'attente!')
         .setColor('BLACK')
-        .addField('Name', song.title, true)
+        .addField('Nom', song.title, true)
         .setThumbnail(song.thumbnail)
-        .addField('Views', song.views, true)
-        .addField('Reqeusted By', song.requester, true)
-        .addField('Duration', timeString, true)
+        .addField('vues', song.views, true)
+        .addField('Demandé par', song.requester, true)
+        .addField('Durée', timeString, true)
         return message.channel.send(embed)
     }
 
@@ -63,7 +63,7 @@ exports.run = async (client, message, args) => {
         if (!song) {
             queue.voiceChannel.leave();
             message.client.queue.delete(message.guild.id);
-            message.channel.send('There are no songs in queue, I\'m leaving the voice channel!')
+            message.channel.send('je n\'ai plus rien a jouer , je m\'en vai!')
             return;
         }
 
@@ -80,13 +80,13 @@ exports.run = async (client, message, args) => {
             .on('error', error => console.error(error));
         dispatcher.setVolumeLogarithmic(queue.volume / 5);
         let noiceEmbed = new discord.MessageEmbed()
-        .setTitle('Started Playing')
+        .setTitle('Commencé a joué')
         .setColor("BLACK")
         .setThumbnail(song.thumbnail)
-        .addField('Name', song.title, true)
-        .addField('Requested By', song.requester, true)
-        .addField('Views', song.views, true)
-        .addField('Duration', timeString, true)
+        .addField('Nom', song.title, true)
+        .addField('Demandé par', song.requester, true)
+        .addField('Vues', song.views, true)
+        .addField('Durée', timeString, true)
         queue.textChannel.send(noiceEmbed);
     };
 
@@ -96,9 +96,9 @@ exports.run = async (client, message, args) => {
         queueConstruct.connection = connection;
         play(queueConstruct.songs[0]);
     } catch (error) {
-        console.error(`I could not join the voice channel`);
+        console.error(`Je n\'ai pas pu rejoindre le salon.`);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(`I could not join the voice channel: ${error}`);
+        return message.channel.send(`Je n\'ai pas pu rejoindre le salon: ${error}`);
     }
 }
